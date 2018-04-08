@@ -38,51 +38,51 @@ $(function(){
         
     <dd>
     <div class="title">
-    <span><img src="/source/images/leftico01.png" /></span>管理信息
+    <span><img src="/source/images/leftico01.png" /></span>学生管理
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="index.html" target="rightFrame">首页模版</a><i></i></li>
-        <li class="active"><cite></cite><a href="right.html" target="rightFrame">数据列表</a><i></i></li>
-        <li><cite></cite><a href="imgtable.html" target="rightFrame">图片数据表</a><i></i></li>
-        <li><cite></cite><a href="form.html" target="rightFrame">添加编辑</a><i></i></li>
-        <li><cite></cite><a href="imglist.html" target="rightFrame">图片列表</a><i></i></li>
-        <li><cite></cite><a href="imglist1.html" target="rightFrame">自定义</a><i></i></li>
-        <li><cite></cite><a href="tools.html" target="rightFrame">常用工具</a><i></i></li>
-        <li><cite></cite><a href="filelist.html" target="rightFrame">信息管理</a><i></i></li>
-        <li><cite></cite><a href="tab.html" target="rightFrame">Tab页</a><i></i></li>
-        <li><cite></cite><a href="error.html" target="rightFrame">404页面</a><i></i></li>
+        
+        <li class="active"><cite></cite><a href="/hello" target="rightFrame">欢迎页面</a><i></i></li>
+        <li><cite></cite><a href="/addstudent" target="rightFrame">添加学生信息</a><i></i></li>
+        <li><cite></cite><a href="form.html" target="rightFrame">查找学生</a><i></i></li>
+        <li><cite></cite><a href="imglist.html" target="rightFrame">编辑学籍</a><i></i></li>
+        <li><cite></cite><a href="imglist1.html" target="rightFrame">添加班级信息</a><i></i></li>
+        <li><cite></cite><a href="tools.html" target="rightFrame">修改班级信息</a><i></i></li>
+        
         </ul>    
     </dd>
         
     
     <dd>
     <div class="title">
-    <span><img src="/source/images/leftico02.png" /></span>其他设置
+    <span><img src="/source/images/leftico02.png" /></span>课程管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="#">编辑内容</a><i></i></li>
+        <li><cite></cite><a href="#">添加课程信息</a><i></i></li>
+        <li><cite></cite><a href="#">修改课程信息</a><i></i></li>
+        <li><cite></cite><a href="#">学生课表</a><i></i></li>
         <li><cite></cite><a href="#">发布信息</a><i></i></li>
-        <li><cite></cite><a href="#">档案列表显示</a><i></i></li>
+        <li><cite></cite><a href="#">上传资料</a><i></i></li>
         </ul>     
     </dd> 
     
     
-    <dd><div class="title"><span><img src="/source/images/leftico03.png" /></span>编辑器</div>
+    <dd><div class="title"><span><img src="/source/images/leftico03.png" /></span>成绩管理</div>
     <ul class="menuson">
-        <li><cite></cite><a href="#">自定义</a><i></i></li>
-        <li><cite></cite><a href="#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="#">信息列表</a><i></i></li>
+        <li><cite></cite><a href="#">学生成绩</a><i></i></li>
+        <li><cite></cite><a href="#">考试安排</a><i></i></li>
+        <li><cite></cite><a href="#">修改成绩</a><i></i></li>
         <li><cite></cite><a href="#">其他</a><i></i></li>
     </ul>    
     </dd>  
     
     
-    <dd><div class="title"><span><img src="/source/images/leftico04.png" /></span>日期管理</div>
+    <dd><div class="title"><span><img src="/source/images/leftico04.png" /></span>系统管理</div>
     <ul class="menuson">
-        <li><cite></cite><a href="#">自定义</a><i></i></li>
-        <li><cite></cite><a href="#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="#">信息列表</a><i></i></li>
-        <li><cite></cite><a href="#">其他</a><i></i></li>
+        <li><cite></cite><a href="#">添加用户</a><i></i></li>
+        <li><cite></cite><a href="#">修改密码</a><i></i></li>
+        <li><cite></cite><a href="#">退出系统</a><i></i></li>
+       
     </ul>
     
     </dd>   

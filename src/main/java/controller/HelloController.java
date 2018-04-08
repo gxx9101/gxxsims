@@ -12,17 +12,17 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/top")
-	public String getTop() {
+	public String top() {
 		return "top";
 	}
 
 	@RequestMapping(value = "/left")
-	public String getLeft() {
+	public String left() {
 		return "left";
 	}
 
 	@RequestMapping(value = "/hello")
-	public String getHello() {
+	public String hello() {		
 		return "hello";
 	}
 	
@@ -31,4 +31,9 @@ public class HelloController {
 		return "login";
 	}
 
+	@RequestMapping(value = "/addstudent")
+	public String addstudent() {
+		return "addstudent";
+	}
+	
 }
