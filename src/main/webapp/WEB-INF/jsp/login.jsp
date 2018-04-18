@@ -25,6 +25,7 @@
 				<div class="pwd">
 					<label>密　码</label><input type="password" class="text" id="value_2" placeholder="密码" name="password" tabindex="2"/>
 					<input type="submit" class="submit" tabindex="3" value="登录"/>
+					<a href="/register"><input type="button" class="submit" tabindex="3" value="注册"/></a>
 					<div class="check"></div>
 				</div>
 				<div class="tip"></div>

@@ -14,8 +14,22 @@ public class Userdaoimpl implements Userdao {
 	
 
 	public int adduser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="insert into user(Username,Password,Phone) values(?,?,?)";
+		int i=0;
+		try{
+			conn=Conn.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,user.getUsername());
+			pstmt.setString(2,user.getPassword());
+			pstmt.setString(3,user.getPhone());
+			i=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			Conn.release(pstmt);
+			Conn.release(conn);
+		}
+		return i;
 	}
 
 	public User isuser(String username, String password) {
@@ -42,4 +56,8 @@ public class Userdaoimpl implements Userdao {
 		return user;
 	}
 
+	
+	
+	
+	
 }

@@ -9,99 +9,7 @@
 
 <link href="/source/css/styleback.css" rel="stylesheet" type="text/css" />
 <script src="/source/js/jquery-1.11.3.min.js"></script>
-<script>
 
-
-$(function(){
-	$('.innerbtn').click(function(){
-		$(this).next('.pop_box').slideDown('400');
-	});
-	$('.closepop').click(function(){
-		$('.pop_box').slideUp('400');
-	});
-
-	$('.tbody1').on("click",".alonTr .innerbtn",function(){
-		$(this).next('.pop_box').slideDown('400');
-	})
-	$('.tbody1').on("click",".alonTr .closepop",function(){
-		$('.pop_box').slideUp('400');
-	})
-
-// 新增表单
-	var show_count = 20;  
-	var count = 1;  
-	$(".AddTr").click(function () {
-		var length = $(".tabInfo .tbody1>tr").length;
-		//alert(length);
-		if (length < show_count) 
-		{
-			$(".model1 tbody .alonTr").clone().appendTo(".tabInfo .tbody1");  
-		}
-	});
-
-
-// 新增内件
-	var show_count2 = 20;  
-	var count2 = 1;  
-	$(".addtr2").click(function () {
-		var length = $(this).parent('.btn_a1').prev('.neijian').children('.tbody2 tr').length;
-		//alert(length);
-		if (length < show_count2) 
-		{
-			$(".model2 tbody tr").clone().appendTo($(this).parent('.btn_a1').prev('.neijian').children('.tbody2'));  
-		}
-	});
-
-	// 动态的新增内件
-	var show_count3 = 20;  
-	var count3 = 1;  
-	$(".tbody1").on("click",".dtadd",function () {
-		var length = $(".neijian .tbody2 tr").length;
-		//alert(length);
-		if (length < show_count3) 
-		{
-			$('.model2 tbody tr').clone().appendTo($(this).parent('.btn_a1').prev('.neijian').children('.tbody2'));  
-		}
-	});
-});
-
-
-function deltr(opp) {
-	var length = $(".tabInfo .tbody1>tr").length;
-	//alert(length);
-	if (length <= 1) {
-		alert("至少保留一行");
-	} else {
-		$(opp).parent().parent().remove();//移除当前行
-		
-	}
-}
-// ----
-
-function deltr2(opp) {
-	var length = $(this).parent('.btn_a1').prev('.neijian').children('.tbody2 tr').length;
-	//alert(length);
-	if (length <= 1) {
-		alert("至少保留一行");
-	} else {
-		$(opp).parent().parent().remove();//移除当前行
-		
-	}
-}
-// ----
-
-function deltr3(opp) {
-	var length = $('.neijian .tbody2 tr').length;
-	//alert(length);
-	if (length <= 1) {
-		alert("至少保留一行");
-	} else {
-		$(opp).parent().parent().remove();//移除当前行
-		
-	}
-}
-// ----
-</script>
 <style>
 	*{padding: 0px;margin:0px ;font-style: normal;list-style-type: none;text-decoration: none;font-family: "微软雅黑";font-size: 14px;border:0 none;line-height: 24px;color: #666; }
 	table{table-layout: fixed;width: 100%;margin-top:30px}
@@ -128,78 +36,65 @@ function deltr3(opp) {
 </style>
 </head>
 <body>
-
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">学生管理</a></li>
+    <li><a href="#">添加学生信息</a></li>
+    </ul>    
+    </div>
 
 <div class="wrapper">
-<table cellspacing="0" cellpadding="0" border="0" class="normTbe model2 hide">
-	<tbody>
-	<tr class="alonTr2">
-	<td><input type="button" value="上传照片" /></td>
-		<td><input type="text" /></td>
-		<td><input type="text" /></td>
-		<td><input type="text" /></td>
-		<td><input type="text" /></td>
-		<td><input type="text" /></td>
-		<td><input type="text" /></td>
-		
-		<td><a class="text_a" href="javascript:;" onclick="deltr3(this)">删除</a></td>
-	</tr>
-	</tbody>
-</table>
-<table cellspacing="0" cellpadding="0" border="0" class="normTbe model1 hide">
-	<tbody>
-		<tr class="alonTr">
-		<td><input type="button" value="上传照片" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td>
-				
-				<a class="text_a" href="javascript:;" onclick="deltr(this)">删除</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
 <div class="itemInfo">
+    <form action="/student" method="post">
     <table cellspacing="0" cellpadding="0" border="0" class="normTbe tabInfo">
     <thead>
     	<tr>
-    	    <th><em>*</em>照片</th>
+    	   
 			<th><em>*</em>学号</th>
 			<th><em>*</em>姓名</th>
 			<th><em>*</em>班级</th>
 			<th><em>*</em>联系电话</th>
-			<th>父亲名</th>
 			<th>母亲名</th>
+			<th>父亲名</th>
 			<th>操作</th>
 		</tr>
 	</thead>
 	<tbody class="tbody1">
 		<tr>
-		    <td><input type="button" value="上传照片" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
+		   
+			<td><input type="text" name="stuid"/></td>
+			<td><input type="text" name="stuname"/></td>
+			<td><input type="text" name="grade"/></td>
+			<td><input type="text" name="stuphone"/></td>
+			<td><input type="text" name="mother"/></td>
+			<td><input type="text" name="father"/></td>
 			<td>					
-			
-          <a class="text_a" href="javascript:;" onclick="deltr(this)">删除</a>
+			<input type="submit" name="tianjia" class="innerbtn" value="确定添加"/>
+        
 			</td>
 		</tr>
 	</tbody>
     </table>
-    <div class="copybtn">
-		<a href="javascript:;" class="AddTr">新增</a>
-		<a href="javascript:;" class="ture">确定</a>
-	</div>
+    </form>  
+    
+      <form action="/uploadimg" enctype="multipart/form-data" method="post">
+      <input type="text" name="stuid" placeholder="学号"/>
+           上传图片：<input type="file" name="file" value="选择图片"/><br/>
+     <input type="submit" value="上传"/>
+     </form>
+     
+     <form action="/uploadimg" enctype="multipart/form-data" method="post">      
+           上传excel：<input type="file" name="file" value="上传excel"/><br/>
+     <input type="submit" value="上传excel"/>
+     </form>
+    
     </div>
-
-</div><!-- itemInfo -->
+    
+    
+  
+    
+   </div>
 
 
 </body>

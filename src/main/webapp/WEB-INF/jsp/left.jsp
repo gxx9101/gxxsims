@@ -44,7 +44,7 @@ $(function(){
         
         <li class="active"><cite></cite><a href="/hello" target="rightFrame">欢迎页面</a><i></i></li>
         <li><cite></cite><a href="/addstudent" target="rightFrame">添加学生信息</a><i></i></li>
-        <li><cite></cite><a href="form.html" target="rightFrame">查找学生</a><i></i></li>
+        <li><cite></cite><a href="/findallstudent" target="rightFrame">编辑学生信息</a><i></i></li>
         <li><cite></cite><a href="imglist.html" target="rightFrame">编辑学籍</a><i></i></li>
         <li><cite></cite><a href="imglist1.html" target="rightFrame">添加班级信息</a><i></i></li>
         <li><cite></cite><a href="tools.html" target="rightFrame">修改班级信息</a><i></i></li>

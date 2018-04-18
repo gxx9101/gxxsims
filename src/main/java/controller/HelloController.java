@@ -35,5 +35,10 @@ public class HelloController {
 	public String addstudent() {
 		return "addstudent";
 	}
-	
+	@RequestMapping(value = "/register")
+	public String register() {
+		return "register";
+	}
+
 }
+
