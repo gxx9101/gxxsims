@@ -1,79 +1,67 @@
 package domain;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.IOException;  
+import java.io.InputStream;  
+import java.util.ArrayList;  
+import java.util.List;
 
 import dao.Studentdaoimpl;
-
-
-
-public class Testexcel {
-	//记录类的输出信息
-   Log log=LogFactory.getLog(Testexcel.class);
-   //获取excel文档的路径；.xlsx文件用XSSFWorkbook  .xlx用的HSSFWorkbook；
-   //public static String filepath="D://demoExcel.xlsx";
-   @SuppressWarnings("deprecation")
-public static void start(String path){
-	   XSSFWorkbook wookbook;
-	   try{
-		   wookbook=new XSSFWorkbook(new FileInputStream(path));
-		   XSSFSheet sheet=wookbook.getSheet("sheet1");
-		   int rows=sheet.getPhysicalNumberOfRows();
-		   for(int i=0;i<rows;i++){
-			   XSSFRow row=sheet.getRow(i);
-			   if(row!=null){
-				   int cells=row.getPhysicalNumberOfCells();
-				   String value="";
-				   for(int j=0;j<cells;j++){
-					   XSSFCell cell=row.getCell(j);
-					   if(cell!=null){
-						   switch(cell.getCellType()){
-						   case XSSFCell.CELL_TYPE_FORMULA:
-						       break;
-						  case XSSFCell.CELL_TYPE_NUMERIC:
-							   value+=cell.getNumericCellValue()+",";
-						       break;
-						   case XSSFCell.CELL_TYPE_STRING:
-							   value+=cell.getStringCellValue()+",";
-							   break;
-							   default:
-								   value+=0;
-						   }
-					   }
-				   }
-				   
-				   String [] val=value.split(",");
-				   Student student=new Student();
-				   student.setStuid(val[0]);
-				   student.setStuname(val[1]);
-				   student.setGrade(val[2]);
-				   student.setStuphone(val[3]);
-				   student.setMother(val[4]);
-				   student.setFather(val[5]);
-				   Studentdaoimpl impl=new Studentdaoimpl();
-				   int p=impl.addstudent(student);
-				   if(p>0){
-					   System.out.println("导入成功");
-				   }
-				   else {
-					   System.out.println("导入失败");
-				   }
-			   }
-		   }
-	   }
-	   catch (FileNotFoundException e){
-		   e.printStackTrace();
-	   }catch(IOException e){
-		   e.printStackTrace();
-	   }
-   }
+import jxl.Cell;  
+import jxl.Sheet;  
+import jxl.Workbook;  
+import jxl.read.biff.BiffException;  
+  
+public class  Testexcel{  
+      
+    private String filePath;  
+    private List<String[]> list = new ArrayList<String[]>();  
+      
+    public Testexcel(String filePath){  
+        this.filePath = filePath;  
+    }  
+      
+    public List<String[]> readExcel() throws IOException, BiffException{  
+        //创建输入流  
+        InputStream stream = new FileInputStream(filePath);  
+        //获取Excel文件对象  
+        Workbook  rwb = Workbook.getWorkbook(stream);  
+        //获取文件的指定工作表 默认的第一个  
+        Sheet sheet = rwb.getSheet(0);    
+        //行数(表头的目录不需要，从1开始)  
+        for(int i=0; i<sheet.getRows(); i++){  
+             //创建一个数组 用来存储每一列的值  
+            String[] str = new String[sheet.getColumns()];  
+            Cell cell = null;  
+            //列数  
+            for(int j=0; j<sheet.getColumns(); j++){  
+              //获取第i行，第j列的值  
+              cell = sheet.getCell(j,i);      
+              str[j] = cell.getContents();  
+            }  
+          //把刚获取的列存入list  
+          list.add(str);  
+        } 
+        return list;
+    }  
+    public String outData(){  
+         for(int i=0;i<list.size();i++){  
+             String[] str = (String[])list.get(i);               
+            	 Student student=new Student();
+            	 student.setStuid(str[0]);
+            	 student.setStuname(str[1]);
+            	 student.setGrade(str[2]);
+            	 student.setStuphone(str[3]);
+            	 student.setMother(str[4]);
+            	 student.setFather(str[5]);            	 
+            	 Studentdaoimpl impl=new Studentdaoimpl();            	 
+            	 impl.addstudent(student);             
+         }  
+         return "chenggong";
+    }  
+      
+//    public static void main(String args[]) throws BiffException, IOException{  
+//    	Testexcel excel = new Testexcel("E:\\student.xls");  
+//        excel.readExcel();  
+//        excel.outData();  
+//    }  
 }

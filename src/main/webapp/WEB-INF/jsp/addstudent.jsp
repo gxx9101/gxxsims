@@ -84,8 +84,8 @@
      <input type="submit" value="上传"/>
      </form>
      
-     <form action="/uploadimg" enctype="multipart/form-data" method="post">      
-           上传excel：<input type="file" name="file" value="上传excel"/><br/>
+     <form action="/uploadexcel" enctype="multipart/form-data" method="post">      
+           上传excel(请上传.xls文件)：<input type="file" name="file" value="上传excel"/><br/>
      <input type="submit" value="上传excel"/>
      </form>
     

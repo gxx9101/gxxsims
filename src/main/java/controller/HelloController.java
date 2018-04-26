@@ -40,5 +40,11 @@ public class HelloController {
 		return "register";
 	}
 
+	@RequestMapping(value = "/text")
+	public String text() {
+		return "text";
+	}
+	
+	
 }
 

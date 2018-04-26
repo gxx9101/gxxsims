@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 //import org.omg.CORBA.Request;
@@ -32,10 +35,12 @@ public class LoginController {
 	   System.out.println("id"+u.getUsername()+"aaa");
 	   System.out.println("id"+u.getPassword()+"bbb");
 	   System.out.println("id"+u.getPhone()+"ccc");
-	   //Userdaoimpl impl=new Userdaoimpl();
-	   //impl.adduser(u);
+	   Userdaoimpl impl=new Userdaoimpl();
+	   impl.adduser(u);
 	   return u;
 	   
    }
+
+   }
    
-}
+

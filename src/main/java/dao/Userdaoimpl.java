@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import domain.User;
 
@@ -54,6 +56,30 @@ public class Userdaoimpl implements Userdao {
 			Conn.release(rs);
 		}
 		return user;
+	}
+
+	public List<User> findalluser() {
+		String sql="select * from user";
+		List<User> userlist=new ArrayList<User>();
+		try{
+			conn=Conn.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				User user=new User();
+				user.setUsername(rs.getString("Username"));
+				user.setPassword(rs.getString("Password"));
+				user.setPhone(rs.getString("Phone"));
+				userlist.add(user);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			Conn.release(pstmt);
+			Conn.release(conn);
+			Conn.release(rs);
+		}
+		return userlist;
 	}
 
 	

@@ -17,6 +17,7 @@
 
 	<!-- 扫描 @Contr -->
 	<context:component-scan base-package="controller" />
+    <context:component-scan base-package="service" />
 	<!--<import resource="config/*.xml" />-->
 
 	<!-- 处理器 映射器 适配器 -->

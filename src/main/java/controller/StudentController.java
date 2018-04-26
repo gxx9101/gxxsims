@@ -11,17 +11,18 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.disk.DiskFileItem;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 
 import dao.Studentdaoimpl;
 import domain.Student;
 import domain.Testexcel;
 import domain.Upload;
+import jxl.read.biff.BiffException;
 
 @Controller
 public class StudentController {
@@ -78,24 +79,43 @@ public class StudentController {
 	 */
 
 	@RequestMapping(value="/uploadexcel")
-	public String uploadexcel(HttpSession session,@RequestParam MultipartFile file)throws IllegalStateException,IOException{
+	public String uploadexcel(HttpServletRequest req, HttpSession session,@RequestParam MultipartFile file)throws IllegalStateException,IOException{
 		if(!file.isEmpty()){
-			String location=session.getServletContext().getRealPath("/upload");
-			String url=location+"/"+System.currentTimeMillis()+file.getOriginalFilename();
-			System.out.println(url);
-			file.transferTo(new File(url));
-			Testexcel.start(url);
-		}
-		
+						
+			File convFile = new File(file.getOriginalFilename());
+			convFile.createNewFile();
+			FileOutputStream fos = new FileOutputStream(convFile);
+			fos.write(file.getBytes());
+			fos.close();
+			String filePath=convFile.getAbsolutePath();			
+			Testexcel excel=new Testexcel(filePath);
+			try {
+				excel.readExcel();
+			} catch (BiffException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			excel.outData();
+		}		
 		return "redirect:/findallstudent";
 	}
+
+	
+	@RequestMapping(value = "/deletestudent")
+	public String deletestudent(String stuid) {
+		Studentdaoimpl impl = new Studentdaoimpl();
+		impl.deletestudent(stuid);
+		return "redirect:/findallstudent";
+
+	}
+	
+	
 	
 	@RequestMapping(value = "/findallstudent")
 	public String findallstudent(HttpServletRequest req) {
 		Studentdaoimpl impl = new Studentdaoimpl();
 		req.getSession().setAttribute("student", impl.findallstudent());
 		return "findallstudent";
-
 	}
-
+	
 }

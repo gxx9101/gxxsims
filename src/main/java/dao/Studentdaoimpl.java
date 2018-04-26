@@ -86,9 +86,27 @@ public class Studentdaoimpl implements Studentdao {
 		return groups;
 	}
 
-	public Student findstudent(int stuid) {
+	public Student findstudent(String stuid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public int deletestudent(String stuid) {
+		// TODO Auto-generated method stub
+		int i =0;
+		String sql="delete from students where Stuid=?";
+		try{
+			conn=Conn.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+			i=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+		   Conn.release(conn);
+		   Conn.release(pstmt);
+		}
+		return i;
 	}
 
 	

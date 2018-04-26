@@ -56,7 +56,7 @@
             <td class="subtotal">${s.stuphone} </td>
             <td class="count">${s.mother }</td>
             <td class="count">${s.father }</td>
-             <td class="count"><a href="DeleteteaServlet?teaid=${o.teaid }">删除</a>&nbsp&nbsp&nbsp<a href="AdminfindteabyidServlet?teaid=${o.teaid }">更新</a></td>
+             <td class="count"><a href="/deletestudent?stuid=${s.stuid }">删除</a>&nbsp&nbsp&nbsp<a href="/updatestudent">更新</a></td>
         </tr>        
       </c:forEach>         
     </tbody>

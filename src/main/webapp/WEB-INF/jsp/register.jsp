@@ -12,11 +12,7 @@
 
 
 <script type="text/javascript">     
-function onClick(){  
-        //var data = $("#form1").serializeArray(); //自动将form表单封装成json  
-        //alert(JSON.stringify(data));  
-        //var jsonuserinfo = $('#zhuce').serializeObject();  
-        //alert(JSON.stringify(jsonuserinfo));  
+function onClick(){      
         var Username=$('#username').val();        
         var Password=$('#password').val();
         var Phone=$('#phone').val();
@@ -28,12 +24,9 @@ function onClick(){
             contentType : 'application/json;charset=UTF-8',        
             success : function(data) {
             	alert(data.username);
-            	//var html = "/source/html/register.html";
-            	//for(var i=0;i<data.length;i++){    //遍历data数组
-            	//var ls = data[i];     
-            	 //html +="<li><span>"ls.username+ls.password+ls.phone"</span></li>";
-            	//}
-                //$("#ulul").html(html); //在html页面id=ulul的标签里显示html内容
+                var html ="";           	 
+            	 html="<li>"+data.username+"</li><li>"+data.password+"</li><li>"+data.phone+"</li>";           	
+                $("#ulul").html(html); //在html页面id=ulul的标签里显示html内容
                 },
                  
             error : function() {
@@ -42,6 +35,8 @@ function onClick(){
                 });
 }  
 </script>  
+
+
 
 <!-- 
  <script type="application/javascript">    
@@ -113,6 +108,11 @@ function onClick(){
     <div class="air-balloon ab-1 png"></div>
 	<div class="air-balloon ab-2 png"></div>
     <div class="footer"></div>
+</div>
+<div>
+<ul id="ulul">
+
+</ul>
 </div>
 
 
