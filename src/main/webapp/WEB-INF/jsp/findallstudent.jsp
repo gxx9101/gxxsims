@@ -46,7 +46,7 @@
     </thead>    
     
     <tbody>
-    <c:forEach items="${student}" var="s" >   	             
+    <c:forEach items="${pb.beanlist}" var="s" >   	             
         <tr> 
              	
            <td class="goods"><img src="${s.image}"/></td>
@@ -58,10 +58,12 @@
             <td class="count">${s.father }</td>
              <td class="count"><a href="/deletestudent?stuid=${s.stuid }">删除</a>&nbsp&nbsp&nbsp<a href="/updatestudent">更新</a></td>
         </tr>        
-      </c:forEach>         
+      </c:forEach>   
+          
     </tbody>
  
 
 </table>
+<%@ include file="/WEB-INF/jsp/pager.jsp" %>  
 </body>
 </html>

@@ -22,6 +22,7 @@ import dao.Studentdaoimpl;
 import domain.Student;
 import domain.Testexcel;
 import domain.Upload;
+import domain.PageBean;
 import jxl.read.biff.BiffException;
 
 @Controller
@@ -111,11 +112,13 @@ public class StudentController {
 	
 	
 	
-	@RequestMapping(value = "/findallstudent")
-	public String findallstudent(HttpServletRequest req) {
-		Studentdaoimpl impl = new Studentdaoimpl();
-		req.getSession().setAttribute("student", impl.findallstudent());
-		return "findallstudent";
-	}
+//	@RequestMapping(value = "/findallstudent")
+//	public String findallstudent(HttpServletRequest req) {
+//		Studentdaoimpl impl = new Studentdaoimpl();
+//		req.getSession().setAttribute("student", impl.findallstudent());
+//		return "findallstudent";
+//	}
+	
+	
 	
 }

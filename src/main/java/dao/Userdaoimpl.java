@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import domain.Mybatisuser;
 import domain.User;
 
 public class Userdaoimpl implements Userdao {
@@ -81,8 +85,37 @@ public class Userdaoimpl implements Userdao {
 		}
 		return userlist;
 	}
-
 	
+	 //mybatis²Ù×÷Êý¾Ý¿â
+	
+	  SqlSessionFactory sqlSessionFactory=Mybatisuser.getSession();
+	  SqlSession session=sqlSessionFactory.openSession();
+	  
+	public List<User> getAll(){	
+		List<User> userlist=session.selectList("selectalluser");
+		session.commit();
+		session.close();
+		return userlist;
+	}
+
+	public void deleteuser(int userid){
+		session.delete("deleteuser",userid);
+		session.commit();
+		session.close();
+	}
+
+	public void insertuser(User user) {
+		session.insert("insertuser",user);
+		session.commit();
+		session.close();
+	}
+	
+	public List<User> finduser(String username){
+		List<User> userlist=session.selectList("finduser", username);
+		session.commit();
+		session.close();
+		return userlist;
+	}
 	
 	
 	

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.PageBean;
 import domain.Student;
 
 
@@ -109,5 +110,69 @@ public class Studentdaoimpl implements Studentdao {
 		return i;
 	}
 
+	public PageBean<Student> findbypage(int pc){
+		int ps=3;
+		int all=0;
+		/**
+		 * 初始化当前页面几局输为ps 3 
+		 * 要查询内容在数据库总数据数 all 为 3
+		 * select count (*) from students;
+		 * select * from student limit 1,3
+		 * 分别获取all，
+		 * 选取要分页显示的内容 显示3条记录，从第二条记录开始
+		 */
+		String sql="select count(*) from students";
+		try{
+			conn=Conn.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				all=Integer.parseInt(rs.getString("count(*)"));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			Conn.release(conn);
+			Conn.release(pstmt);
+			Conn.release(rs);
+		}
+		/**
+		 * 新建泛型类对象，数据类型为Student,并调用相关方法
+		 */
+		PageBean<Student> pageBean=new PageBean<Student>();
+		pageBean.setAll(all);
+		pageBean.setPc(pc);
+		pageBean.setPs(ps);
+		
+		List<Student> list=new ArrayList<Student>();
+		sql="select * from students limit "+(pc-1)*ps+","+ps;
+		try{
+			conn=Conn.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+				while(rs.next()){
+					Student student=new Student();
+					student.setStuid(rs.getString("Stuid"));
+					student.setStuname(rs.getString("Stuname"));
+					student.setGrade(rs.getString("Grade"));
+					student.setStuphone(rs.getString("Stuphone"));
+					student.setMother(rs.getString("Mother"));
+					student.setFather(rs.getString("father"));
+					student.setImage(rs.getString("Image"));
+					list.add(student);
+				}
+				
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			Conn.release(conn);
+			Conn.release(pstmt);
+			Conn.release(rs);
+			
+		}
+			pageBean.setBeanlist(list);
+			return pageBean;
+	}
+	
 	
 }

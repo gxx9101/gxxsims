@@ -79,6 +79,7 @@ $(function(){
     
     <dd><div class="title"><span><img src="/source/images/leftico04.png" /></span>系统管理</div>
     <ul class="menuson">
+        <li><cite></cite><a href="/findalluser" target="rightFrame">查看用户</a><i></i></li>
         <li><cite></cite><a href="#">添加用户</a><i></i></li>
         <li><cite></cite><a href="#">修改密码</a><i></i></li>
         <li><cite></cite><a href="#">退出系统</a><i></i></li>
